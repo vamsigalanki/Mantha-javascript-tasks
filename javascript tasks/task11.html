@@ -1,0 +1,24 @@
+11. Write a program to find ( remove the ) duplicate elements from an array of
+elements and display the unique elements .
+
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+       <script>
+        let array=[22,89,100,76,22,89,100,88,99];
+        function duplicate(dd){
+            return (dd.filter((x,index)=>
+                dd.indexOf(x) === index
+            ));
+        }
+        
+        const result= duplicate(array);
+        console.log(result);
+        
+
+       </script>
+
+    </body>
+</html>

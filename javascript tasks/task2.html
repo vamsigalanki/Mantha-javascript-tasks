@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Empoly Salary
+            <!-- Write a function calculateSalary → that accepts two parameters ( monthly
+            pay scale , deductions ) : take a fixed amount of salary ( 25 k per month
+            and deduct the deductions amount , then display salary -->
+        </title>
+    </head>
+    <body>
+        <script>
+            function calculateSalary(deductions){
+                //fixed month salary;
+                const fixedsalary=25000;
+                //final salary
+                const finalsalary=fixedsalary-deductions;
+                console.log("After deductions of salary" + finalsalary);
+            };
+            calculateSalary(prompt());
+        </script>
+    </body>
+</html>

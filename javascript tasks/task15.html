@@ -1,0 +1,73 @@
+15.Create a reset password form with following fields New password , Confirm
+password  add following restrictions
+-> don't allow user to copy the content
+-> don't allow user to paste the content
+If the user performs any of the above operations, display him a text below
+in red color saying as “ Copy is restricted “ , “ Paste is restricted” , disable
+the right click option .
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <style>
+        .error-message {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Reset Password Form</h2>
+    <form>
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" name="new-password" required><br><br>
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required><br><br>
+
+        <span id="copy-error" class="error-message">Copy is restricted</span><br>
+        <span id="paste-error" class="error-message">Paste is restricted</span><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        const inputs = document.querySelectorAll('input[type="password"]');
+        const copyError = document.getElementById('copy-error');
+        const pasteError = document.getElementById('paste-error');
+
+        inputs.forEach(input => {
+            // Disable copy
+            input.addEventListener('copy', function(e) {
+                e.preventDefault();
+                showError(copyError);
+            });
+
+            // Disable paste
+            input.addEventListener('paste', function(e) {
+                e.preventDefault();
+                showError(pasteError);
+            });
+
+            // Disable cut
+            input.addEventListener('cut', function(e) {
+                e.preventDefault();
+                showError(copyError);
+            });
+        });
+
+        // Function to show error messages
+        function showError(errorElement) {
+            copyError.style.display = 'none'; // Hide the other error
+            pasteError.style.display = 'none'; // Hide the other error
+            errorElement.style.display = 'inline'; // Show relevant error
+        }
+    </script>
+</body>
+</html>
